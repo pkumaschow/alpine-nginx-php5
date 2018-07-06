@@ -6,6 +6,6 @@ docker pull pkumaschow/alpine-nginx-php5
 
 https://hub.docker.com/r/pkumaschow/alpine-nginx-php5/
 
-#run it with
+# run it with
 
 docker run -i -t -p 80:80 --rm pkumaschow/alpine-nginx-php5
