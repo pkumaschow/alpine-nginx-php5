@@ -24,4 +24,6 @@ ADD ./files/docker-entrypoint-init.d /docker-entrypoint-init.d
 
 EXPOSE 80 443
 
+HEALTHCHECK CMD curl --fail http://localhost:80/ || exit 1
+
 ENTRYPOINT ["/bin/sh", "/docker-entrypoint.sh"]
