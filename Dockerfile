@@ -16,6 +16,7 @@ RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
 COPY ./files/etc/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY ./files/etc/nginx/fastcgi.conf /etc/nginx/fastcgi.conf
+COPY ./files/etc/php5/php-fpm.conf /etc/php5/php-fpm.conf
 COPY ./files/www/index.php /www/index.php
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh
@@ -24,6 +25,6 @@ ADD ./files/docker-entrypoint-init.d /docker-entrypoint-init.d
 
 EXPOSE 80 443
 
-HEALTHCHECK CMD curl --fail http://localhost:80/ || exit 1
+HEALTHCHECK CMD curl --fail http://localhost:80/status || exit 1
 
 ENTRYPOINT ["/bin/sh", "/docker-entrypoint.sh"]
